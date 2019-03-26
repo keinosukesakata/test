@@ -1,0 +1,24 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+
+    <!-- 既存の入力内容を受け取る（DBからのデータ取り出し） -->
+    <%= form_tag("/posts/#{@post.id}/update") do %> <!-- フォームの送信先(update)を決定-->
+      <div class="form">
+        <div class="form-body">
+
+          <!-- @postのエラーが表示されるよう、「〇〇」の部分を書き換えてください -->
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <textarea name="content"><%= @post.content %></textarea>  <!-- 入力データをcontentに送信する -->
+          <input type="submit" value="保存">
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
